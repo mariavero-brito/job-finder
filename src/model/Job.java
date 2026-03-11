@@ -11,6 +11,7 @@ public class Job {
     private double salary;
     private String jobURL;
     private int score;
+    private int yearsOfExperience;
 
     //Constructor
     public Job(String companyName,
@@ -19,7 +20,8 @@ public class Job {
                boolean isJobRemote,
                double salary,
                String jobURL,
-               String jobTitle){
+               String jobTitle,
+               int yearsOfExperience){
         this.companyName = companyName;
         this.jobDescription = jobDescription;
         this.jobLocation = jobLocation;
@@ -27,6 +29,7 @@ public class Job {
         this.salary = salary;
         this.jobURL = jobURL;
         this.jobTitle = jobTitle;
+        this.yearsOfExperience = yearsOfExperience;
     }
 
     // Getters and Setters
@@ -53,6 +56,8 @@ public class Job {
     public String getJobURL() {
         return jobURL;
     }
+
+    public int getYearsOfExperience() {return yearsOfExperience;}
 
     public int getScore() {
         return score;
