@@ -29,8 +29,7 @@ public class JobScorer {
 
     private int calculateExperienceScore(Job job){
         if (job.getYearsOfExperience() >=0 && job.getYearsOfExperience()<=2) return 25;
-        if (job.getYearsOfExperience() >=1 && job.getYearsOfExperience()<=3) return 20;
-        if (job.getYearsOfExperience() >= 3) return 10;
+        if (job.getYearsOfExperience() >=3 && job.getYearsOfExperience()<=4) return 10;
 
         return 0;
     }

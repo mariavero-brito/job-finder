@@ -1,5 +1,8 @@
 import filter.JobFilter;
 import model.Job;
+import ranking.JobRanker;
+import scoring.JobScorer;
+
 import java.util.ArrayList;
 
 public class Main {
@@ -47,9 +50,21 @@ public class Main {
 
         ArrayList<Job> filteredJobs = jobfilter.filterJobs(jobArrayList);
 
+        JobScorer jobScorer = new JobScorer();
+        jobScorer.scoreJobs(filteredJobs);
+
+        JobRanker jobRanker = new JobRanker();
+        jobRanker.rankJobs(filteredJobs);
+
         for (Job job : filteredJobs){
-            System.out.println(job.getCompanyName());
+            System.out.println(
+                    job.getCompanyName() +
+                            " | $" + job.getSalary() +
+                            " | Score: " + job.getScore()
+            );
+        }
+
+
         }
 
         }
-    }
