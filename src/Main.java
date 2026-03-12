@@ -1,5 +1,6 @@
 import filter.JobFilter;
 import model.Job;
+import output.ConsolePrinter;
 import ranking.JobRanker;
 import scoring.JobScorer;
 
@@ -56,14 +57,8 @@ public class Main {
         JobRanker jobRanker = new JobRanker();
         jobRanker.rankJobs(filteredJobs);
 
-        for (Job job : filteredJobs){
-            System.out.println(
-                    job.getCompanyName() +
-                            " | $" + job.getSalary() +
-                            " | Score: " + job.getScore()
-            );
-        }
-
+        ConsolePrinter consolePrinter = new ConsolePrinter();
+        consolePrinter.printJobs(filteredJobs);
 
         }
 

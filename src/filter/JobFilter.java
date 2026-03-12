@@ -1,11 +1,13 @@
 package filter;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import model.Job;
 
 public class JobFilter {
 
-    public ArrayList<Job> filterJobs(ArrayList<Job> jobArrayList){
+    public ArrayList<Job> filterJobs(List<Job> jobArrayList){
 
         ArrayList<Job> filteredJobs = new ArrayList<>();
 

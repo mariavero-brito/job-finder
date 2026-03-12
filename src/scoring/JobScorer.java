@@ -3,9 +3,10 @@ package scoring;
 import model.Job;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class JobScorer {
-    public void scoreJobs(ArrayList<Job> jobArrayList){
+    public void scoreJobs(List<Job> jobArrayList){
 
         for (Job job : jobArrayList) {
             int score = 0;
