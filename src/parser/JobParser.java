@@ -5,6 +5,9 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import java.util.Arrays;
+import java.util.stream.Stream;
+
 public class JobParser {
 
     public static void main(String[] args){
@@ -50,9 +53,22 @@ public class JobParser {
         }
     }
 
-    private static int parseSalary(String salaryText) {
-        //add logic here
-        return 0;
+    private static String parseSalary(String salaryText) {
+        salaryText = salaryText.replace("$", "")
+                                .replace(",", "")
+                                .replace(".", "")
+                                .trim();
+
+        if (salaryText.contains("-")){
+            String[] parts = Arrays.stream(salaryText.split("-"))
+                                        .map(String::trim)
+                                        .toArray(String[]::new);
+
+            return parts[0];
+            }
+        }
+
+        return salaryText;
     }
 
     private static boolean parseRemote(String locationText){
