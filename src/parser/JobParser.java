@@ -111,7 +111,6 @@ public class JobParser {
     }
 
     private static int parseYearsOfExperience(String descriptionText){
-
         Pattern pattern = Pattern.compile("(\\d+)\\s*years");
         Matcher matcher = pattern.matcher(descriptionText);
 
