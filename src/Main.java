@@ -1,6 +1,7 @@
 import filter.JobFilter;
 import model.Job;
 import output.ConsolePrinter;
+import parser.JobParser;
 import ranking.JobRanker;
 import scoring.JobScorer;
 
@@ -47,6 +48,8 @@ public class Main {
         jobArrayList.add(job2);
         jobArrayList.add(job3);
 
+        JobParser jobParser = new JobParser();
+
         JobFilter jobfilter = new JobFilter();
 
         ArrayList<Job> filteredJobs = jobfilter.filterJobs(jobArrayList);
@@ -56,6 +59,7 @@ public class Main {
 
         JobRanker jobRanker = new JobRanker();
         jobRanker.rankJobs(filteredJobs);
+
 
         ConsolePrinter consolePrinter = new ConsolePrinter();
         consolePrinter.printJobs(filteredJobs);

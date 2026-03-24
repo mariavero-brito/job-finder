@@ -15,7 +15,6 @@ import java.util.stream.Stream;
 public class JobParser {
 
     public static void main(String[] args){
-
         String json = "{\n" +
                 "  \"0-legal-notice\": \"Remotive API Legal Notice\",\n" +
                 "  \"job-count\": 1,\n" +
@@ -35,6 +34,10 @@ public class JobParser {
                 "    }\n" +
                 "  ]\n" +
                 "}";
+
+    }
+
+    public static ArrayList<Job> parseJobs(String json){
 
         //convert String > Jason Object
         JsonObject root = JsonParser.parseString(json).getAsJsonObject();
@@ -76,6 +79,7 @@ public class JobParser {
             //add job to the jobs array list
             jobs.add(job);
         }
+        return jobs;
     }
 
     private static double parseSalary(String salaryText) {
