@@ -60,24 +60,46 @@ public class JobParser {
     }
 
     private static double parseSalary(String salaryText) {
-        salaryText = salaryText.replace("$", "")
-                                .replace(",", "")
-                                .replace(".", "")
-                                .trim();
+       try {
+           salaryText = salaryText.replace("$", "")
+                   .toLowerCase()
+                   .replace(",", "")
+                   .replace(".", "")
+                   .replace("ote","")
+                   .trim();
 
-        if (salaryText.contains("-")){
-            String[] parts = Arrays.stream(salaryText.split("-"))
-                                        .map(String::trim)
-                                        .toArray(String[]::new);
+           if (salaryText.contains("-") && salaryText.contains("k")){
+               salaryText = salaryText.replace("k", "");
+               String[] parts = Arrays.stream(salaryText.split("-"))
+                       .map(String::trim)
+                       .toArray(String[]::new);
 
-            double salary1 = Double.parseDouble(parts[0]);
-            double salary2 = Double.parseDouble(parts[1]);
-            return (salary1 + salary2) / 2;
-            }
+               double salary1 = Double.parseDouble(parts[0]);
+               double salary2 = Double.parseDouble(parts[1]);
+               double average = (salary1 + salary2) / 2;
+               return average * 1000;
 
-        else {
-            return Double.parseDouble(salaryText);
-        }
+           } else if (salaryText.contains("-")){
+               String[] parts = Arrays.stream(salaryText.split("-"))
+                       .map(String::trim)
+                       .toArray(String[]::new);
+
+               double salary1 = Double.parseDouble(parts[0]);
+               double salary2 = Double.parseDouble(parts[1]);
+               return (salary1 + salary2) / 2;
+
+           } else if (salaryText.contains("k")){
+               salaryText = salaryText.replace("k", "");
+               double salary1 = Double.parseDouble(salaryText);
+               return salary1 * 1000;
+
+           } else {
+               return Double.parseDouble(salaryText);
+           }
+       } catch (NumberFormatException e) {
+           return 0;
+       }
+
     }
 
     private static boolean parseRemote(String locationText){

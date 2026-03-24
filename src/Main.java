@@ -23,14 +23,20 @@ public class Main {
         //job parser to clean API JSON data
         ArrayList<Job> jobArrayList = JobParser.parseJobs(json);
 
+        System.out.println(jobArrayList.size());
+
         //job filter to remove unqualified jobs
         JobFilter jobfilter = new JobFilter();
 
         ArrayList<Job> filteredJobs = jobfilter.filterJobs(jobArrayList);
 
+        System.out.println(jobArrayList.size());
+
         //job scorer to assign a score to each job
         JobScorer jobScorer = new JobScorer();
         jobScorer.scoreJobs(filteredJobs);
+
+        System.out.println(filteredJobs);
 
         //job ranker to rank jobs from best to worst based on scores
         JobRanker jobRanker = new JobRanker();
