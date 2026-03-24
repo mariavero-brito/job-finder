@@ -16,11 +16,11 @@ public class ConsolePrinter {
             System.out.println("Job #" + (i + 1));
             System.out.println("Title: " + job.getJobTitle());
             System.out.println("Company: " + job.getCompanyName());
-            System.out.println("Salary: $" + job.getSalary());
+            System.out.printf("Salary: $%,.0f%n", job.getSalary());
             System.out.println("YOE: " + job.getYearsOfExperience());
             System.out.println("Score: " + job.getScore());
             System.out.println("URL: " + job.getJobURL());
-            System.out.println("--------------------------");
+            System.out.println("_____________________________________________________________________________________________________________________________");
 
         }
     }
