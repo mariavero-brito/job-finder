@@ -11,7 +11,7 @@ public class JobApiClient {
         try {
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create("https://remotive.com/api/remote-jobs?limit=10"))
+                    .uri(URI.create("https://remotive.com/api/remote-jobs?limit=50"))
                     .build();
 
             HttpResponse<String> response = client.send(request,
