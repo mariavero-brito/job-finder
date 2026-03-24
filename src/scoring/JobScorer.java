@@ -6,14 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JobScorer {
-    public void scoreJobs(List<Job> jobArrayList){
 
+    public void scoreJobs(List<Job> jobArrayList, String techStack){
         for (Job job : jobArrayList) {
             int score = 0;
 
             score += calculateSalaryScore(job);
             score += calculateExperienceScore(job);
-            score += calculateTechStackScore(job);
+            score += calculateTechStackScore(job, techStack);
 
             job.setScore(score);
         }
@@ -35,8 +35,10 @@ public class JobScorer {
         return 0;
     }
 
-    private int calculateTechStackScore(Job job){
-        if(job.getJobDescription().toLowerCase().contains("java")) return 25;
+    private int calculateTechStackScore(Job job, String techStack){
+        if(job.getJobDescription().toLowerCase()
+                .contains(techStack))
+            return 25;
 
         return 0;
     }

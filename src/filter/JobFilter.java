@@ -6,19 +6,19 @@ import java.util.Arrays;
 import java.util.List;
 
 import model.Job;
+import preferences.UserPreferences;
 
 public class JobFilter {
 
-    public ArrayList<Job> filterJobs(List<Job> jobArrayList){
+    public ArrayList<Job> filterJobs(List<Job> jobArrayList, UserPreferences userPreferences) {
 
         ArrayList<Job> filteredJobs = new ArrayList<>();
 
-
         for (Job job : jobArrayList) {
-            if(job.getSalary() >= 75000
+            if (job.getSalary() >= userPreferences.getMinSalary()
                     && job.isJobRemote()
-                    && isTitleMatch(job.getJobTitle())
-                    && job.getYearsOfExperience() <= 5){
+                    && isTitleMatch(job.getJobTitle(), userPreferences)
+                    && job.getYearsOfExperience() <= 5) {
                 filteredJobs.add(job);
             }
         }
@@ -27,15 +27,17 @@ public class JobFilter {
 
     }
 
-    private static boolean isTitleMatch(String jobTitleText){
+    private static boolean isTitleMatch(String jobTitleText, UserPreferences userPreferences) {
         jobTitleText = jobTitleText.toLowerCase();
 
-        List<String> keywords = Arrays.asList("software engineer", "software developer", "engineer", "developer");
+        ArrayList<String> keywords = new ArrayList<>(Arrays.asList("software engineer", "software developer", "engineer", "developer"));
+        keywords.add(userPreferences.getTitleKeyword());
 
-        for (String keyword : keywords){
+        for (String keyword : keywords) {
             if (jobTitleText.contains(keyword)) {
                 return true;
             }
-        } return false;
+        }
+        return false;
     }
 }
