@@ -36,7 +36,6 @@ public class JobParser {
                 "}";
 
     }
-
     public static ArrayList<Job> parseJobs(String json){
 
         //convert String > Jason Object
