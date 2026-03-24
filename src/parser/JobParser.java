@@ -14,28 +14,6 @@ import java.util.stream.Stream;
 
 public class JobParser {
 
-    public static void main(String[] args){
-        String json = "{\n" +
-                "  \"0-legal-notice\": \"Remotive API Legal Notice\",\n" +
-                "  \"job-count\": 1,\n" +
-                "  \"jobs\": [\n" +
-                "    {\n" +
-                "      \"id\": 123,\n" +
-                "      \"url\": \"https://remotive.com/remote-jobs/product/lead-developer-123\",\n" +
-                "      \"title\": \"Lead Developer\",\n" +
-                "      \"company_name\": \"Remotive\",\n" +
-                "      \"company_logo\": \"https://remotive.com/job/123/logo\",\n" +
-                "      \"category\": \"Software Development\",\n" +
-                "      \"job_type\": \"full_time\",\n" +
-                "      \"publication_date\": \"2020-02-15T10:23:26\",\n" +
-                "      \"candidate_required_location\": \"Worldwide\",\n" +
-                "      \"salary\": \"$40,000 - $50,000\",\n" +
-                "      \"description\": \"The full HTML job description here\"\n" +
-                "    }\n" +
-                "  ]\n" +
-                "}";
-
-    }
     public static ArrayList<Job> parseJobs(String json){
 
         //convert String > Jason Object

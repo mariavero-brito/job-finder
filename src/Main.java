@@ -11,8 +11,14 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
 
-        //not set up yet
+        //call Remotive API to get json response with job data
         String json = JobApiClient.fetchJobs();
+
+        //verify response is not null
+        if (json == null){
+            System.out.println("Failed to fetch jobs");
+            return;
+        }
 
         //job parser to clean API JSON data
         ArrayList<Job> jobArrayList = JobParser.parseJobs(json);
