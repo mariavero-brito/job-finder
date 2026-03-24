@@ -32,11 +32,11 @@ public class Main {
         //job filter to remove unqualified jobs
         JobFilter jobfilter = new JobFilter();
 
-        ArrayList<Job> filteredJobs = jobfilter.filterJobs(jobArrayList);
+        ArrayList<Job> filteredJobs = jobfilter.filterJobs(jobArrayList, userPreferences);
 
         //job scorer to assign a score to each job
         JobScorer jobScorer = new JobScorer();
-        jobScorer.scoreJobs(filteredJobs);
+        jobScorer.scoreJobs(filteredJobs, userPreferences.getTechStack());
 
         //job ranker to rank jobs from best to worst based on scores
         JobRanker jobRanker = new JobRanker();
